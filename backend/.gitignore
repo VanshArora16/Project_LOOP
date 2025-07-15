@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# PRIVATE KEY PATH
+config/keys/private.key
