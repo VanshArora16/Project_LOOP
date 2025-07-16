@@ -1,6 +1,7 @@
 import express from "express";
 import { protectedRoute } from "../middleware/auth.middleware.js";
 import {
+    checkAuth,
     login,
     logout,
     signup,
@@ -16,5 +17,6 @@ router.post("/logout", logout);
 
 // protected routes
 router.put("/update-profile", protectedRoute, updateProfile);
+router.get("/check", protectedRoute, checkAuth);
 
 export default router;

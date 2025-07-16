@@ -121,7 +121,7 @@ export const updateProfile = async (req, res, next) => {
             return res.status(400).json({ message: "Invalid image format" });
         }
         const user = await User.findById(userId);
-        
+
         //DELETE OLD IMAGE
         if (user.cloudinaryId) {
             await cloudinary.uploader.destroy(user.cloudinaryId);
@@ -153,5 +153,14 @@ export const updateProfile = async (req, res, next) => {
     } catch (error) {
         console.log(`Error in Update Profile: ${error}`);
         next(error);
+    }
+};
+
+export const checkAuth = (req, res) => {
+    try {
+        res.status(200).json(req.user) ;
+    } catch (error) {
+        console.log(`Error in checkAuth controller ${error.message}`);
+        res.status(500).json({ message: "Internal Server Error" });
     }
 };
