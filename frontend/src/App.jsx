@@ -5,13 +5,13 @@ import Navbar from "./components/Navbar.jsx";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useAuthStore } from "./store/useAuthStore.js";
 import { Loader } from "lucide-react";
+import { Toaster } from "react-hot-toast";
 // page imports
 import ProfilePage from "./pages/ProfilePage.jsx";
 import SettingsPage from "./pages/SettingsPage.jsx";
 import LogInPage from "./pages/LogInPage.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
-import { Toaster } from "react-hot-toast";
 
 const App = () => {
     const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
