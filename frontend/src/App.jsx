@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar.jsx";
 
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useAuthStore } from "./store/useAuthStore.js";
+import { useThemeStore } from "./store/useThemeStore.js";
 import { Loader } from "lucide-react";
 import { Toaster } from "react-hot-toast";
 // page imports
@@ -15,10 +16,16 @@ import HomePage from "./pages/HomePage.jsx";
 
 const App = () => {
     const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
+    const { theme } = useThemeStore();
     useEffect(() => {
         checkAuth();
     }, [checkAuth]);
     console.log({ authUser });
+
+    // SETTING THEME
+    useEffect(() => {
+        document.documentElement.setAttribute("data-theme", theme);
+    }, [ theme]);
 
     if (isCheckingAuth && !authUser) {
         return (
