@@ -11,6 +11,7 @@ import SettingsPage from "./pages/SettingsPage.jsx";
 import LogInPage from "./pages/LogInPage.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
     const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
@@ -51,6 +52,8 @@ const App = () => {
                     }
                 />
             </Routes>
+
+            <Toaster position="bottom-right" reverseOrder={true} />
         </div>
     );
 };
