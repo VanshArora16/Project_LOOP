@@ -24,7 +24,7 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 app.use("/api/auth/", authRoutes);
-app.use("/api/message", messageRoutes);
+app.use("/api/messages", messageRoutes);
 app.use("/api", publicKeyRoute);
 
 app.listen(PORT, () => {
