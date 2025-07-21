@@ -16,7 +16,9 @@ export const useChatStore = create((set, get) => ({
             const res = await axiosInstance.get("/messages/users");
             set({ users: res.data });
         } catch (error) {
-            toast.error(error?.response?.data?.message|| "Something went wrong");
+            toast.error(
+                error?.response?.data?.message || "Something went wrong"
+            );
         } finally {
             set({ isUsersLoading: false });
         }
@@ -26,16 +28,25 @@ export const useChatStore = create((set, get) => ({
         set({ isMessagesLoading: true });
         try {
             const res = await axiosInstance.get(`/messages/${userId}`);
-            set({ messages: res.data });
+            const incomingMessages = Array.isArray(res.data)
+                ? res.data
+                : Array.isArray(res.data?.messages)
+                ? res.data.messages
+                : [];
+            set({ messages: incomingMessages });
         } catch (error) {
-            toast.error(error?.response?.data?.message|| "Something went wrong");
+            toast.error(
+                error?.response?.data?.message || "Something went wrong"
+            );
         } finally {
             set({ isMessagesLoading: false });
         }
     },
     sendMessage: async (messageData) => {
         const { selectedUser } = get();
-        const currentMessages = Array.isArray(get().messages) ? get().messages : [];
+        const currentMessages = Array.isArray(get().messages)
+            ? get().messages
+            : [];
         try {
             const res = await axiosInstance.post(
                 `/messages/send/${selectedUser._id}`,
@@ -47,8 +58,10 @@ export const useChatStore = create((set, get) => ({
             }
             set({ messages: [...currentMessages, res.data] });
         } catch (error) {
-            toast.error(error?.response?.data?.message|| "Something went wrong");
-            console.log(error)
+            toast.error(
+                error?.response?.data?.message || "Something went wrong"
+            );
+            console.log(error);
         }
     },
     // todo: optimize this later
