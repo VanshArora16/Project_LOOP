@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useChatStore } from "../store/useChatStore";
 import ChatHeader from "./ChatHeader";
 import MessageInput from "./MessageInput";
@@ -8,11 +8,21 @@ import { useAuthStore } from "../store/useAuthStore";
 const ChatContainer = () => {
     const { messages, getMessages, isMessagesLoading, selectedUser } =
         useChatStore();
-
+    // ref to the *end* of the message list
+    const endRef = useRef(null);
     const { authUser } = useAuthStore();
     useEffect(() => {
-        getMessages(selectedUser._id);
-    }, [selectedUser._id, getMessages]);
+        if (selectedUser?._id) {
+            getMessages(selectedUser._id);
+        }
+    }, [selectedUser, getMessages]);
+    // scroll to bottom on every load / message change
+    useEffect(() => {
+        if (!isMessagesLoading) {
+            endRef.current?.scrollIntoView({ behavior: "smooth" });
+        }
+    }, [messages, isMessagesLoading]);
+
     if (isMessagesLoading) {
         return (
             <div className="flex-1 flex flex-col overflow-auto">
@@ -42,9 +52,9 @@ const ChatContainer = () => {
                                     src={
                                         message.senderId === authUser._id
                                             ? authUser.profilePic ||
-                                              "/Avtar.png"
+                                            "/Avtar.png"
                                             : selectedUser.profilePic ||
-                                              "/Avtar.png"
+                                            "/Avtar.png"
                                     }
                                     alt="Profile Pic"
                                 />
@@ -67,6 +77,7 @@ const ChatContainer = () => {
                         </div>
                     </div>
                 ))}
+                <div ref={endRef} />
             </div>
 
             <MessageInput />
