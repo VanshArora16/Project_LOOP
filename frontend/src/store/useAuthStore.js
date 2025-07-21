@@ -28,7 +28,7 @@ export const useAuthStore = create((set) => ({
             set({ authUser: res.data });
             toast.success("Account Created Successfully");
         } catch (error) {
-            toast.error(error.response.data.message);
+            toast.error(error?.response?.data?.message|| "Something went wrong");
         } finally {
             set({ isSigningUp: false });
         }
@@ -40,7 +40,7 @@ export const useAuthStore = create((set) => ({
             set({authUser: res.data})
             toast.success("Logging In Successfully")
         } catch (error) {
-            toast.error(error.response.data.message)
+            toast.error(error?.response?.data?.message|| "Something went wrong")
         }finally{
             set({isLoggingIn: false})
         }
@@ -51,7 +51,7 @@ export const useAuthStore = create((set) => ({
             set({ authUser: null });
             toast.success("Logged out successfully");
         } catch (error) {
-            toast.error(error.response.data.message);
+            toast.error(error?.response?.data?.message|| "Something went wrong");
         }
     },
     updateProfile: async (data) => {
@@ -62,8 +62,7 @@ export const useAuthStore = create((set) => ({
             toast.success("Profile Updated Successfully")
             
         } catch (error) {
-            console.log("error in update profile:", error);
-            toast.error(error.response.data.message)
+            toast.error(error?.response?.data?.message|| "Something went wrong")
         }finally{
             set({isUpdatingProfile: false})
         }
