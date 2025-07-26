@@ -15,12 +15,11 @@ import SignUpPage from "./pages/SignUpPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
 
 const App = () => {
-    const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
+    const { authUser, checkAuth, isCheckingAuth} = useAuthStore();
     const { theme } = useThemeStore();
     useEffect(() => {
         checkAuth();
     }, [checkAuth]);
-    console.log({ authUser });
 
     // SETTING THEME
     useEffect(() => {

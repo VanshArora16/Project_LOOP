@@ -60,10 +60,29 @@ export const useChatStore = create((set, get) => ({
         } catch (error) {
             toast.error(
                 error?.response?.data?.message || "Something went wrong"
-            );
-            console.log(error);
+            );  
         }
     },
+
+    subscribeToMessages: () => {
+        const { selectedUser } = get();
+        if (!selectedUser) return;
+
+        const socket = useAuthStore.getState().socket;
+
+        // todo: optimize this later
+        socket.on("newMessage", (newMessage) => {
+            set({
+                messages: [...get().messages, newMessage],
+            });
+        });
+    },
+
+    unsubscribeFromMessages: () => {
+        const socket = useAuthStore.getState().socket;
+        socket.off("newMessage");
+    },
+
     // todo: optimize this later
     setSelectedUser: (selectedUser) => set({ selectedUser }),
 }));

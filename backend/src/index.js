@@ -6,9 +6,10 @@ import { connectDB } from "./lib/db.js";
 import publicKeyRoute from "./routes/publicKey.routes.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import { app, server } from "./lib/socket.io.js";
 
 dotenv.config();
-const app = express();
+
 const PORT = process.env.PORT || 3000;
 
 app.use(cookieParser()); //middleware & read and parse cookies from incoming request
@@ -27,7 +28,7 @@ app.use("/api/auth/", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api", publicKeyRoute);
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`server is running on ${PORT}`);
     connectDB();
 });
