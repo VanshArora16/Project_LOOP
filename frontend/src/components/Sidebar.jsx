@@ -42,8 +42,9 @@ const Sidebar = () => {
                         <div className="relative mx-auto lg:mx-0">
                             <img
                                 src={user.profilePic || "/Avtar.png"}
-                                alt={user.name}
+                                alt={user.fullName}
                                 className="size-12 object-cover rounded-full"
+                                title={user.fullName}
                             />
                             {onlineUsers.includes(user._id) && (
                                 <span className="absolute bottom-0 right-0 h-3 w-3 bg-green-500 rounded-full ring-2 ring-zinc-900" />
