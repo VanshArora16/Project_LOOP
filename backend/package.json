@@ -4,7 +4,8 @@
   "description": "A real-time chat application named loop build using MERN stack and Socket.io",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./src/index.js"
+    "dev": "nodemon ./src/index.js",
+    "start": "node ./src/index.js"
   },
   "keywords": [],
   "author": "Vansh Arora",
