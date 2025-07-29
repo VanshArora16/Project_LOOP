@@ -3,7 +3,8 @@ import { useAuthStore } from "../store/useAuthStore";
 import { Camera, Loader2, Mail, User } from "lucide-react";
 
 const ProfilePage = () => {
-    const { authUser, isUpdatingProfile, updateProfile } = useAuthStore();
+    const { authUser, isUpdatingProfile, updateProfile, deleteAccount } =
+        useAuthStore();
     const [selectedImg, setSelectedImg] = useState(null);
     const handleImageUpload = async (e) => {
         const file = e.target.files[0];
@@ -14,10 +15,19 @@ const ProfilePage = () => {
 
         reader.onload = async () => {
             const base64Image = reader.result;
-            setSelectedImg(base64Image)
+            setSelectedImg(base64Image);
             await updateProfile({ profilePic: base64Image });
-
         };
+    };
+
+    const confirmDeletion = () => {
+        if (
+            window.confirm(
+                "Are you sure you want to delete your account? This action cannot be undone."
+            )
+        ) {
+            deleteAccount();
+        }
     };
     return (
         <div className="h-screen pt-20">
@@ -33,7 +43,11 @@ const ProfilePage = () => {
                     <div className="flex flex-col items-center gap-4">
                         <div className="relative">
                             <img
-                                src={selectedImg||authUser.profilePic || "/Avtar.png"}
+                                src={
+                                    selectedImg ||
+                                    authUser.profilePic ||
+                                    "/Avtar.png"
+                                }
                                 alt="Profile"
                                 className="size-32 rounded-full object-cover border-4 "
                             />
@@ -100,12 +114,25 @@ const ProfilePage = () => {
                         <div className="space-y-3 text-sm">
                             <div className="flex items-center justify-between py-2 border-b border-zinc-700">
                                 <span>Member Since</span>
-                                <span className="text-base-content">{authUser.createdAt?.split("T")[0]}</span>
+                                <span className="text-base-content">
+                                    {authUser.createdAt?.split("T")[0]}
+                                </span>
                             </div>
                             {/* account status */}
                             <div className="flex items-center justify-between py-2">
                                 <span>Account Status</span>
                                 <span className="text-green-500">Active</span>
+                            </div>
+                            <div className="flex items-center justify-between py-2 ">
+                                <span className="text-red-500">
+                                    Delete Account
+                                </span>
+                                <button
+                                    className="btn btn-error text-white btn-sm "
+                                    onClick={confirmDeletion}
+                                >
+                                    Delete My Account
+                                </button>
                             </div>
                         </div>
                     </div>

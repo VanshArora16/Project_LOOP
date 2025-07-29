@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { axiosInstance } from "../lib/axios.js";
 import toast from "react-hot-toast";
 import { io } from "socket.io-client";
-
+import { useChatStore } from "./useChatStore.js";
 const BASE_URL = "http://localhost:3000";
 export const useAuthStore = create((set, get) => ({
     authUser: null,
@@ -99,12 +99,24 @@ export const useAuthStore = create((set, get) => ({
 
         set({ socket: socket });
 
-        socket.on("getOnlineUsers",(userIds)=>{
-            set({onlineUsers:userIds})
-        })
+        socket.on("getOnlineUsers", (userIds) => {
+            set({ onlineUsers: userIds });
+        });
     },
 
     disconnectSocket: () => {
         if (get().socket?.connected) get().socket.disconnect();
+    },
+    deleteAccount: async () => {
+        try {
+            await axiosInstance.delete("/auth/delete-account");
+            toast.success("Your account has been deleted");
+            useAuthStore.getState().logout();
+            useChatStore.getState().resetChatStore();
+        } catch (error) {
+            toast.error(
+                error?.response?.data?.message || "Something went wrong"
+            );
+        }
     },
 }));
