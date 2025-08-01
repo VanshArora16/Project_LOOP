@@ -1,5 +1,4 @@
-
-![loop logo](https://github.com/VanshArora16/Project_LOOP/blob/main/frontend/public/loop logo.svg)
+![loop logo](https://github.com/VanshArora16/Project_LOOP/blob/main/frontend/public/image.png)
 
 ---
 # LOOP - A Real-Time Chat Application
