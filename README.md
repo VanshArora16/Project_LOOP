@@ -1,5 +1,5 @@
 
-![loop logo](https://github.com/VanshArora16/Project_LOOP/blob/main/frontend/public/loop.png)
+![loop logo](https://github.com/VanshArora16/Project_LOOP/blob/main/frontend/public/loop logo.svg)
 
 ---
 # LOOP - A Real-Time Chat Application
@@ -7,7 +7,6 @@
 ---
 
 LOOP is a modern real-time chat application built with the MERN stack (MongoDB, Express, React, Node.js) and Socket.io for instant messaging capabilities.
-
 
 ## Features
 
@@ -30,39 +29,45 @@ LOOP is a modern real-time chat application built with the MERN stack (MongoDB, 
 - 32 UI themes
 
 - Online/offline user filter
+
 ---
+
 ## Tech Stack
+
 ---
+
 ### Frontend
-![React](https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg) React &nbsp;&nbsp;
 
-![vite](https://vite.dev/logo.svg) Vite &nbsp;&nbsp;
+- React
 
-![Socket.io](https://upload.wikimedia.org/wikipedia/commons/9/96/Socket-io.svg) Socket.io Client &nbsp;&nbsp;
+- Vite
 
-![Tailwind](https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg?) Tailwind CSS &nbsp;&nbsp;
+- Socket.io Client
 
-![daisyUI](https://th.bing.com/th/id/OIP.OZ4gKyOm-jKWzURQBGnCegAAAA?w=80&h=80&c=1&bgcl=d99d50&r=0&o=7&dpr=1.3&pid=ImgRC&rm=3) daisyUI &nbsp;&nbsp;
+- Tailwind CSS
 
-![React Icons](https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg) React Icons &nbsp;&nbsp;
+- daisyUI
 
-![Axios](https://logos-world.net/wp-content/uploads/2024/01/Axios-Logo.png) Axios &nbsp;&nbsp;
+- React Icons
+
+- Axios
 
 ---
 
 ### Backend
-![Node.js](https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg) Node.js &nbsp;&nbsp;
 
-![Express](https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png) Express.js &nbsp;&nbsp;
+- Node.js
 
-![MongoDB](https://upload.wikimedia.org/wikipedia/commons/9/93/MongoDB_Logo.svg) MongoDB (with Mongoose) &nbsp;&nbsp;
+- Express.js
 
-![Socket.io](https://upload.wikimedia.org/wikipedia/commons/9/96/Socket-io.svg) Socket.io &nbsp;&nbsp;
+- MongoDB (with Mongoose)
 
-![JWT](https://seeklogo.com/images/J/jwt-logo-65D86B4640-seeklogo.com.png) JWT Auth &nbsp;&nbsp;
+- Socket.io
 
-🔐 BcryptJS &nbsp;&nbsp;
+- JWT Auth
 
-![Cloudinary](https://commercemarketplace.adobe.com/media/customer/MAG002970828/63354cc58e1c1.png) Cloudinary &nbsp;&nbsp;
+- BcryptJS
 
-![Dotenv](https://raw.githubusercontent.com/motdotla/dotenv/master/dotenv.svg) Dotenv &nbsp;&nbsp;
+- Cloudinary
+
+- Dotenv
