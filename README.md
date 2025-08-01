@@ -1,8 +1,6 @@
-![loop logo](https://github.com/VanshArora16/Project_LOOP/blob/main/frontend/public/image.png)
-
-
-
 # LOOP - A Real-Time Chat Application
+
+![loop logo](https://github.com/VanshArora16/Project_LOOP/blob/main/frontend/public/image.png)
 
 ---
 
@@ -33,7 +31,6 @@ LOOP is a modern real-time chat application built with the MERN stack (MongoDB, 
 ---
 
 ## Tech Stack
-
 
 ### Frontend
 
