@@ -5,7 +5,7 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
     plugins: [react()],
     optimizeDeps: {
-        include: ["lucide-react"],
+        include: ["lucide-react", "zustand", "react-router-dom","socket.io-client","axios"],
     },
-    base: './', 
+    base: "./",
 });
